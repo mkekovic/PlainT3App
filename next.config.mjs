@@ -7,7 +7,7 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
-  assetPrefix:'https://main.d25oprjd26xp5v.amplifyapp.com/',
+  assetPrefix:'https://main.d25oprjd26xp5v.amplifyapp.com',
   reactStrictMode: true,
   /* If trying out the experimental appDir, comment the i18n config out
    * @see https://github.com/vercel/next.js/issues/41980 */
