@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Layout, ImagesAPIWrapper} from '../../components/index';
+import { Grid, Layout, ImagesAPIWrapper} from '../../components/index';
 
 export default function DataContent() {
   const router = useRouter();
@@ -9,28 +9,16 @@ export default function DataContent() {
   const carsUrl = 'https://www.ag-grid.com/example-assets/row-data.json';
   const [cars, setCars] = useState([]);
 
-  useEffect(() => {
-    fetch('https://www.ag-grid.com/example-assets/row-data.json').then(result => result.json()).then(rowData => {
-      console.log(rowData);
-    }).catch((err) => {
-      console.log(err);
-    });
-  }, [])
-
   const renderMainContent: any = () => {
-    // if (router.query.dataContent === 'table' || router.query.dataContent === 'bloomberg') {
-    //   return (
-    //     <Grid key='1' url={router.query.dataContent === 'table' ? carsUrl : bloomberUrl} isStructured={router.query.dataContent === 'table'}  />
-    //   );
-    // } else {
-    //   return (
-    //     <ImagesAPIWrapper />
-    //   );
-    // }
+    if (router.query.dataContent === 'table' || router.query.dataContent === 'bloomberg') {
+      return (
+        <Grid key='1' url={router.query.dataContent === 'table' ? carsUrl : bloomberUrl} isStructured={router.query.dataContent === 'table'}  />
+      );
+    } else {
       return (
         <ImagesAPIWrapper />
       );
-
+    }
   }
 
   const subMenu = [
