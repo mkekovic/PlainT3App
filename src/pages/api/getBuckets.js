@@ -5,7 +5,7 @@ import {ServiceConfigurationOptions} from 'aws-sdk/lib/service';
 
 
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
 
     // Set the AWS Region.
     const REGION = "us-west-2";
@@ -13,11 +13,11 @@ export default async function handler(req: any, res: any) {
     const s3Client = new S3Client({ region: REGION, profile: 'data-architect-west' });
 
     try {
-        const data: any = await s3Client.send(new ListBucketsCommand({}));
+        const data = await s3Client.send(new ListBucketsCommand({}));
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json')
         res.json({ data })
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
         res.status(error.status || 500).end(error.message);
     }
