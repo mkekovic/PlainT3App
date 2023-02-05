@@ -27,7 +27,11 @@ const NavBar = () => {
                         </li>
 
                         <li>
-                            <Link as="/example/" href="/" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">Example</Link>
+                            <Link as="/examples/csr" href="/examples/csr" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">CSR</Link>
+                        </li>
+
+                        <li>
+                            <Link as="/examples/ssr" href="/examples/ssr" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">SSR</Link>
                         </li>
 
                         <li>
