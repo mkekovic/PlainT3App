@@ -1,15 +1,14 @@
 import Link from 'next/link';
-// import { useIsAuthenticated } from "@azure/msal-react";
+import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from './SignInButton'
 import { SignOutButton } from './SignOutButton';
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 
 
 const NavBar = () => {
-    // const isAuthenticated: any = useIsAuthenticated();
-    const { data: sessionData } = useSession();
+    const isAuthenticated: any = useIsAuthenticated();
+    // const { data: sessionData } = useSession(); // For auth with NextAuth
   
-    // {isAuthenticated && welcomeComponent}
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -23,7 +22,7 @@ const NavBar = () => {
                         </li>
 
                         <li>
-                            <Link as="/about" href="/about" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">About</Link>
+                            <Link as="/about/table" href="/about/table" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">About</Link>
                         </li>
 
                         <li>
@@ -35,8 +34,8 @@ const NavBar = () => {
                         </li>
 
                         <li>
-                            {/* {isAuthenticated ? SignOutButton() : SignInButton()} */}
-                            {sessionData ? SignOutButton() : SignInButton()}
+                            {isAuthenticated ? SignOutButton() : SignInButton()}
+                            {/* {sessionData ? SignOutButton() : SignInButton()} // For auth with NextAuth*/}
                         </li>
                     </ul>
                 </div>

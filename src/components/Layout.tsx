@@ -1,17 +1,17 @@
 import NavBar from './NavBar';
 import { WelcomeName } from './WelcomeName';
-// import { useIsAuthenticated } from "@azure/msal-react";
-import { useSession } from "next-auth/react"
+import { useIsAuthenticated } from "@azure/msal-react";
+// import { useSession } from "next-auth/react"// For auth with NextAuth
 
 export default function Layout(props: any) {
     const welcomeComponent: any = WelcomeName();
-    //   const isAuthenticated: any = useIsAuthenticated();
-    const { data: session } = useSession()
+      const isAuthenticated: any = useIsAuthenticated();
+    // const { data: session } = useSession()// For auth with NextAuth
 
     return (
         <div className='w-full'>
-            {/* <div className='w-full flex justify-center justify-items-center items-center'>{(isAuthenticated || session) && welcomeComponent}</div> */}
-            <div className='w-full flex justify-center justify-items-center items-center'>{(session) && welcomeComponent}</div>
+            <div className='w-full flex justify-center justify-items-center items-center'>{(isAuthenticated) && welcomeComponent}</div>
+            {/* <div className='w-full flex justify-center justify-items-center items-center'>{(session) && welcomeComponent}</div> // For auth with NextAuth */}
             <NavBar />
             <hr />
             {props.children}

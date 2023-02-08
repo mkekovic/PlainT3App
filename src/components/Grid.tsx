@@ -3,14 +3,14 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import Spinner from './Spinner';
-// import { useIsAuthenticated } from "@azure/msal-react";
+import { useIsAuthenticated } from "@azure/msal-react";
 import UnauthorizedContent from "./UnauthorizedContent";
 
 export default function Grid(props: any) {
     const [isLoading, setIsLoading] = useState(true)
     const [rowData, setRowData] = useState([]);
     const [columnDefs, setColumnDefs] = useState([{}]);
-    let isAuth: any = false;//useIsAuthenticated();
+    let isAuth: any = useIsAuthenticated();
 
     var myHeaders = new Headers();
     myHeaders.append("authToken", "abc123");

@@ -1,14 +1,14 @@
-// import { useMsal } from '@azure/msal-react';
-import { signOut } from "next-auth/react";
+import { useMsal } from '@azure/msal-react';
+// import { signOut } from "next-auth/react";
 
 export const SignOutButton = () => {
-    // const { instance } = useMsal();
+    const { instance } = useMsal();
 
     const handleSignout = () => {
-        // instance.logoutRedirect();
+        instance.logoutRedirect();
     }
     return (
-        <button onClick={() => void signOut()}>
+        <button onClick={() => handleSignout()}>
             Sign Out
         </button>
     )
