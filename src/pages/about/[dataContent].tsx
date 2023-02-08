@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Grid, Layout, ImagesAPIWrapper} from '../../components/index';
+import { Grid, Layout, ImagesAPIWrapper } from '../../components/index';
 
 export default function DataContent() {
   const router = useRouter();
@@ -12,7 +12,11 @@ export default function DataContent() {
   const renderMainContent: any = () => {
     if (router.query.dataContent === 'table' || router.query.dataContent === 'bloomberg') {
       return (
-        <Grid key='1' url={router.query.dataContent === 'table' ? carsUrl : bloomberUrl} isStructured={router.query.dataContent === 'table'}  />
+        <div className="flex justify-center w-full">
+          <div className="flex w-4/6 self-center">
+            <Grid key={router.query.dataContent} url={router.query.dataContent === 'table' ? carsUrl : bloomberUrl} isStructured={router.query.dataContent === 'table'} />
+          </div>
+        </div>
       );
     } else {
       return (
@@ -33,7 +37,7 @@ export default function DataContent() {
         <div className="flex flex-col justify-center p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           {subMenu.map(({ name, nav }: any) => {
             return (
-              <Link key={`${nav}`} as={`/about/${nav}/`} href="/about/[dataContent]" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white ">{name}</Link>
+              <Link key={`${nav}`} as={`/about/${nav}/`} href="/about/[dataContent]" className={`${router.query.dataContent == nav && 'bg-blue-400 text-white w-20 flex justify-center'} block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100  md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white`}>{name}</Link>
             )
           })}
         </div>
