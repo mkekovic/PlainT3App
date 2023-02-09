@@ -27,8 +27,10 @@ export default function ImagesAPIWrapper() {
             </button>
             {isLoading ? <Spinner /> :
                 <div className='flex flex-wrap'>
+                    <ImageCard special={true} owner={'Rudys'} src={`/RudysDog.png`} key={`/RudysDog.svg`} />
+                    <ImageCard special={true} owner={'Miljans'} src={`/Riko.png`} key={`/Miljan.svg`} />
                     {images.map(dog => (
-                        <ImageCard src={dog} key={dog} />
+                        <ImageCard special={false} src={dog} key={dog} />
                     ))}
                 </div>
             }
